@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-import Header from './header/Header';
+import Header from './components/header/header';
+import Banner from './components/banner/banner';
+import Game from './components/game/game';
+import Footer from './components/footer/footer';
 
 class App extends Component {
-
-  HeaderTitle = "Memory Game";
 
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header/>
+        <Banner/>
+        <Game/>
+        <Footer/>
       </div>
     );
   }

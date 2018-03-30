@@ -1,0 +1,10 @@
+.top-footer {
+    height: 50px;
+    background-color: lightblue;
+}
+
+.bottom-footer {
+    background-color: blue;
+    color: white;
+    text-align: left;
+}
