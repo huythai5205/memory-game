@@ -13,7 +13,8 @@ export default class Game extends Component {
     constructor(props) {
         super(props);
 
-        this.cardClicked = this.cardClicked.bind(this);
+
+
         this.state = {
             memoryCards: [
                 {
@@ -35,18 +36,40 @@ export default class Game extends Component {
                 }
             ]
         }
+
+        this.cardClicked = this.cardClicked.bind(this);
+        this.shuffleCards = this.shuffleCards.bind(this);
     }
-    componentDidMount() {
-        console.log(this.state.memoryCards);
+    componentWillMount() {
+        const currentState = this.state.memoryCards;
+        const newMemState = this.shuffleCards(currentState);
+        this.setState({ ...this.state, memoryCards: newMemState });
     }
 
+    shuffleCards(arr) {
+        console.log([...arr]);
+        const initalLength = arr.length
+        let length = arr.length;
+        const newArray = [];
+        while (newArray.length !== initalLength) {
+            //generate random index then push that index to new array
+            const random = Math.floor(Math.random() * length + 1);
+            const randomVal = arr.splice(random - 1, 1);
+            newArray.push(randomVal[0]);
+            length--;
+        }
+        console.log(newArray);
+        return newArray;
+
+    }
+
+
     cardClicked(id) {
-        console.log(this.state);
-        console.log(id);
-        // const currentState = this.state.memoryCards;
-        // console.log(currentState);
-        // currentState['memoryCards'][id]['hasClicked'] = true;
-        // this.setState({ ...currentState });
+
+        const currentState = this.state.memoryCards;
+        currentState[id]['hasClicked'] = true;
+        const newMemState = this.shuffleCards(currentState);
+        this.setState({ ...this.state, memoryCards: newMemState });
     }
 
     render() {
