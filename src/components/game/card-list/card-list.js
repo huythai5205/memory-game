@@ -4,25 +4,23 @@ import './card-list.css';
 import MemoryCard from '../memory-card/memory-card';
 
 export default class CardList extends Component {
+    constructor(props) {
+        super(props);
+        this.shuffleCards = this
+            .shuffleCards
+            .bind(this);
+    }
 
-    shuffle(array) {
+    shuffleCards(array) {
         console.log(array);
-        var currentIndex = array.length,
-            temporaryValue,
-            randomIndex;
 
-        // While there remain elements to shuffle...
-        while (0 !== currentIndex) {
-
-            // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-
-            // And swap it with the current element.
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
+        if (array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
         }
+
         console.log(array);
         return array;
     }
@@ -32,10 +30,9 @@ export default class CardList extends Component {
             <div className="card-list">
                 <div className="row row justify-content-around">
                     {this
-                        .props
-                        .memoryCards
+                        .shuffleCards(this.props.memoryCards)
                         .map((memoryCard) => {
-                            return (<MemoryCard memoryCard={memoryCard}/>)
+                            return (<MemoryCard memoryCard={memoryCard} shuffleCards={this.shuffleCards}/>)
                         })}
                 </div>
 

@@ -18,6 +18,9 @@ export default class MemoryCard extends Component {
         } else {
             console.log("already clicked");
         }
+        this
+            .props
+            .shuffleCards();
     }
 
     render() {
