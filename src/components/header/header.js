@@ -19,7 +19,7 @@ export default class Header extends Component {
                         <h4>Click an image to begin!</h4>
                     </div>
                     <div className="col-sm">
-                        <h4>Score: 0 | Top Score: 0</h4>
+                        <h4>Score: {this.props.state.score} | Top Score: {this.props.state.topScore}</h4>
                     </div>
                 </div>
             </div>

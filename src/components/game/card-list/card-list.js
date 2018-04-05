@@ -6,17 +6,6 @@ import './card-list.css';
 import MemoryCard from '../memory-card/memory-card';
 
 export default class CardList extends Component {
-    constructor(props) {
-        super(props);
-
-    }
-
-
-
-    componentDidMount() {
-        console.log(this.props);
-    }
-
 
     render() {
         return (<div className="card-list" >

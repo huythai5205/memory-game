@@ -8,12 +8,21 @@ import Footer from './components/footer/footer';
 
 class App extends Component {
 
+  constructor(props){
+    super(props);
+
+    this.state={
+      score: 0,
+      topScore:0
+    }
+  }
+  
   render() {
     return (
       <div className="App">
-        <Header/>
+        <Header state={this.state}/>
         <Banner/>
-        <Game/>
+        <Game state={this.state}/>
         <Footer/>
       </div>
     );

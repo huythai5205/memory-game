@@ -14,7 +14,6 @@ export default class MemoryCard extends Component {
     }
 
     render() {
-        console.log('!!!!!!!!!!!!!!!!!!', this.props.memoryCard);
         return (
             <div className="col-md-3 col-sm-4 col-xs-6">
                 <div onClick={this.imgHasClicked} className="memory-card">
