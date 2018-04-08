@@ -18,19 +18,15 @@ export default class Game extends Component {
             memoryCards: [
                 {
                     url: ant_man,
-                    name: 'Any-Man',
                     hasClicked: false
                 }, {
                     url: avengers,
-                    name: 'Any-Man',
                     hasClicked: false
                 }, {
                     url: black_panther,
-                    name: 'Any-Man',
                     hasClicked: false
                 }, {
                     url: deadpool,
-                    name: 'Any-Man',
                     hasClicked: false
                 }
             ]
@@ -62,18 +58,26 @@ export default class Game extends Component {
 
     }
 
-    resetGame(){
-        // this.props.state.score = 0;
+    resetGame() {
+        if (this.props.score === this.state.memoryCards.length) {
+            this.props.setScore();
+        }
+        const currentState = this.state.memoryCards;
+        currentState.forEach(card => {
+            card.hasClicked = false;
+        });
+        this.props.resetScore();
+        this.setState({ memoryCards: currentState });
     }
 
     cardClicked(id) {
-        if(!this.state.memoryCards[id]['hasClicked']){
-            this.props.state.score++;
+        if (!this.state.memoryCards[id]['hasClicked']) {
+            this.props.setScore();
             const currentState = this.state.memoryCards;
             currentState[id]['hasClicked'] = true;
             const newMemState = this.shuffleCards(currentState);
             this.setState({ ...this.state, memoryCards: newMemState });
-        }else{
+        } else {
             this.resetGame();
         }
     }
