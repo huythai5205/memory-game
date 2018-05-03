@@ -18,7 +18,6 @@ export default class MemoryCard extends Component {
             <div className="col-md-3 col-sm-4 col-xs-6">
                 <div onClick={this.imgHasClicked} className="memory-card">
                     <img src={this.props.memoryCard.url} alt="" />
-                    <p>Has Clicked: {JSON.stringify(this.props.memoryCard.hasClicked)}</p>
                 </div>
             </div>
 
